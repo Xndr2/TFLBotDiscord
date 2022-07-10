@@ -67,7 +67,7 @@ client.on('interactionCreate', async interaction => {
         await command.execute(interaction);
     } catch (err) {
         if(err) console.error(err); //if valid error
-        await interaction.reply("an error has accured while executing commands. Please contact <@434760513377927188> with a screenshot.");
+        await interaction.reply({ content: "an error has accured while executing commands. Please contact <@434760513377927188> with a screenshot.", ephemeral: true });
     }
 });
 

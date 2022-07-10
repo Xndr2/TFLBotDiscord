@@ -13,7 +13,6 @@ module.exports = {
             
     async execute (interaction) {
         const string = interaction.options.getString('input');
-        const user = interaction.options.getUser('target');
         const messages = ["For sure", "No", "No question, Yes", "No one knows", "Maybe", "No question, No"]
         const randomMessage = messages[Math.floor(Math.random() * messages.length)];
         //await interaction.reply(randomMessage);
@@ -23,7 +22,7 @@ module.exports = {
             .setTitle(":eyes: "+string)
             .setDescription(randomMessage)
             .setTimestamp()
-            .setFooter("Decide command.")
+            .setFooter({text: "Decide command."})
         
         
         await interaction.reply({ embeds: [DecideEmbed] });
