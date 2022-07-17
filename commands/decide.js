@@ -18,7 +18,7 @@ module.exports = {
         //await interaction.reply(randomMessage);
 
         const DecideEmbed = new MessageEmbed()
-            .setColor('DARK_AQUA')
+            .setColor('PURPLE')
             .setTitle(":eyes: "+string)
             .setDescription(randomMessage)
             .setTimestamp()

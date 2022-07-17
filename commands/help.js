@@ -8,17 +8,17 @@ module.exports = {
             
     async execute (interaction) {
         const HelpEmbed = new MessageEmbed()
-            .setColor('DARK_AQUA')
+            .setColor('PURPLE')
             .setTitle("List of all Commands.")
             .setDescription("")
             .addField("/help", "Gives you all possible commands.")
             .addField("/decide [input]", "Give you an awnser to you hardest question.")
             .addField("/ping", "replies with pong.")
             .addField("/meme", "Gets a meme from /r/memes on reddit.")
-            .addfield("/info", "Gives you information about the bot.")
-            .addfield("QOTD", "Gives you a quote of the day.")
+            .addField("/info", "Gives you information about the bot.")
+            .addField("QOTD", "Gives you a quote of the day.")
             .setTimestamp()
-            .setFooter("Help command.")
+            .setFooter({text: "Help command."})
         
         
         await interaction.reply({ embeds: [HelpEmbed] });
