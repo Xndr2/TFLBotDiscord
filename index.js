@@ -60,14 +60,31 @@ client.on('ready', () => {
 
 //call commands
 client.on('interactionCreate', async interaction => {
-    if(!interaction.isCommand()) return; //make sure interaction is valis command
-    const command = client.commands.get(interaction.commandName);
-    if(!command) return;
-    try {
-        await command.execute(interaction);
-    } catch (err) {
-        if(err) console.error(err); //if valid error
-        await interaction.reply({ content: "an error has accured while executing commands. Please contact <@434760513377927188> with a screenshot.", ephemeral: true });
+    if(interaction.isCommand()){ //make sure interaction is valis command
+        const command = client.commands.get(interaction.commandName);
+        
+        if(!command) return;
+        try {
+            await command.execute(interaction, client);
+        } catch (err) {
+            if(err) console.error(err); //if valid error
+            await interaction.reply({ content: "an error has accured while executing commands. Please contact <@434760513377927188> with a screenshot.", ephemeral: true });
+        }
+    }
+    
+    if(interaction.isButton()){ //make sure interaction is valid button
+        if(interaction.customId === 'memebutton') //make sure button is meme button
+        {
+            const command = client.commands.get("meme");
+            if(!command) return;
+            try {
+                await command.execute(interaction, client); //execute meme command
+            }
+            catch (err) {
+                if(err) console.error(err); //if valid error
+                await interaction.reply({ content: "an error has accured while executing commands. Please contact <@434760513377927188> with a screenshot.", ephemeral: true });
+            }
+        }
     }
 });
 
