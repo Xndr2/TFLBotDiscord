@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
-const { MessageEmbed, User, Guild } = require('discord.js')
+const { MessageEmbed, MessageButton, MessageActionRow, User, Guild } = require('discord.js')
 const fetch = require('node-fetch');
 
 module.exports = {
@@ -18,8 +18,16 @@ module.exports = {
             .setImage(data.url)
             .setDescription(data.ups+" Upvotes")
             .setTimestamp()
-            //.setFooter(text: "Meme command.")
+            .setFooter({text: "Meme command."});
+
+        const row = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+                .setCustomId('memebutton')
+                .setLabel('New Meme')
+                .setStyle('PRIMARY'),
+        );
         
-        await interaction.reply({ embeds: [MemeEmbed] });
+        await interaction.reply({ embeds: [MemeEmbed], components: [row]});
     }
 }

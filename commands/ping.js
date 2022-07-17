@@ -7,13 +7,6 @@ module.exports = {
         .setDescription("reply with pong"),
 
     async execute(interaction) {
-        /* const row = new MessageActionRow()
-			.addComponents(
-				new MessageButton()
-					.setCustomId('primary')
-					.setLabel('Primary')
-					.setStyle('PRIMARY'),
-			); */
-            await interaction.reply({ content: 'Pong!', /* components: [row] */ })
+            await interaction.reply({ content: 'Pong!' })
     }
 }
