@@ -16,7 +16,7 @@ module.exports = {
             .setTitle(data.title)
             .setURL(data.postLink)
             .setImage(data.url)
-            .setDescription(data.ups+" Upvotes")
+            .setDescription(data.ups+" Upvotes | by "+data.author)
             .setTimestamp()
             .setFooter({text: "Meme command."});
 
