@@ -14,7 +14,7 @@ module.exports = {
             .setTitle("Information about the bot.")
             .setThumbnail("https://cdn.discordapp.com/attachments/881195253992947773/989895227831627776/TFL_logo_Standard.png")
             .setDescription("This bot is made by Xndr for [TFL](https://discord.gg/E6Wv4jpHHj) and is used for entertainment purposes only.")
-            .addField("Version", "1.0.0")
+            .addField("Version", "1.0.1")
             .addField("Author", "Xndr")
             .addField("Guilds", `${client.guilds.cache.size}`)
             .addField("Users", `${client.users.cache.size}`)
