@@ -17,6 +17,7 @@ module.exports = {
             .addField("/meme", "Gets a meme from /r/memes on reddit.")
             .addField("/info", "Gives you information about the bot.")
             .addField("QOTD", "Gives you a quote of the day.")
+            .addField("/serverinfo", "Gives you information about the server.")
             .setTimestamp()
             .setFooter({text: "Help command."})
         
