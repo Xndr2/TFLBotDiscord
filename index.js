@@ -4,6 +4,7 @@ const fs = require("fs");
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const {Client, Intents, Collection, Interaction} = require("discord.js");
+const { Search } = require("youtube-search");
 const { Console } = require("console");
 const internal = require("stream");
 const client = new Client({
