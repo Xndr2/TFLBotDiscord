@@ -25,18 +25,17 @@ module.exports = {
                 .setFooter({text: "QOTD command."})
 
                 await interaction.channel.send("<@&981481997228720178>") //ping QOTD
-                await interaction.reply({ embeds: [QOTDEmbed] }) //send embed
-                
-                const Thread = await interaction.channel.threads.create({ //make thread
-                    name: textString,
-                    autoArchiveDuration: 60,
-                    reason: 'Thread to answer in.',
-                })
-                if (Thread.joinable) await thread.join(); //join thread
-                //await thread.members.add('434760513377927188');
-                await Thread.members.add(interaction.member.user.id);
 
-
+                await interaction.reply({ embeds: [QOTDEmbed], fetchReply: true }).then(async (message) => {
+                    const thread = await message.startThread({ //make thread
+                        name: textString,
+                        autoArchiveDuration: 60,
+                        reason: 'Thread to answer in.',
+                    })
+                    if (thread.joinable) await thread.join(); //join thread
+                    await thread.members.add(interaction.member.user.id); //add user to thread
+                });
+    
             } else await interaction.reply({ content: "You can not activate the command in this channel.", ephemeral: true})
         }else //if user does not have role
             await interaction.reply({ content: "You can not activate this command. Your actions are logged.", ephemeral: true})
