@@ -19,7 +19,7 @@ module.exports = {
         ),
 
     async execute(interaction, client) {
-        if(interaction.member.roles.cache.has('880832571255181322')) //check if user has the management role
+        if(interaction.member.roles.cache.has('880832571255181322') || interaction.member.roles.cache.has('936990096295591978')) //check if user has the management role
         {
             if(interaction.channel.id === '981262669212422194') //check channel
             {
