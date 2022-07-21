@@ -2,6 +2,7 @@ const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageActionRow, MessageEmbed, Collection, Client } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const search = require("youtube-search");
+const fs = require('fs');
 const opts = {   //options for youtube search
     maxResults: 1,
     key: process.env.YOUTUBE_API,
@@ -51,5 +52,15 @@ module.exports = {
             } else await interaction.reply({ content: "You can not activate the command in this channel.", ephemeral: true})
         } else //if user does not have role
             await interaction.reply({ content: "You can not activate this command. Your actions are logged.", ephemeral: true})
+
+
+        //log into file
+        const content = '\nSOTD command executed by '+ interaction.member.user.username + ' at ' + new Date().toLocaleString();
+        const path = 'Logs.txt';
+        fs.writeFile(path, content, { flag: 'a' }, err => { //append to file write at end of file
+            if (err) {
+              console.error(err);
+            }
+        });
     }
 }

@@ -16,6 +16,8 @@ const client = new Client({
     ]
 })
 
+fs.writeFile('Logs.txt', '\n\nBot started at '+ new Date().toLocaleString(), { flag: 'a' }, err => {console.log(err)}); //logs the start of the bot
+
 //get commands from folder
 const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js")); //get all files that end with .js
 const commands = []; //make an array for the commands
@@ -32,6 +34,7 @@ client.on('ready', () => {
     client.user.setActivity("the server activity", {
         type: "WATCHING",
       });
+      fs.writeFile('Logs.txt', '\nset status to watching', { flag: 'a' }, err => {console.log(err)}); //logs status
 
       //register commands
       const CLIENT_ID = client.user.id;
@@ -46,12 +49,16 @@ client.on('ready', () => {
                     body: commands
                 });
                 console.log("Succesfully registered commands globally.");
+                //logs commands globally
+                fs.writeFile('Logs.txt', '\nSuccesfully registered commands globally. '+ new Date().toLocaleString(), { flag: 'a' }, err => {console.log(err)});
 
             }else{
                 await rest.put(Routes.applicationGuildCommands(CLIENT_ID, process.env.GUILD_ID), {
                     body: commands
                 });
                 console.log("Succesfully registered commands locally.");
+                 //logs commands locally
+                fs.writeFile('Logs.txt', '\nSuccesfully registered commands locally. '+ new Date().toLocaleString(), { flag: 'a' }, err => {console.log(err)});
             }
         } catch(err){
             if(err) console.error(err); //if valid error

@@ -1,0 +1,8 @@
+Bot started at 7/20/2022, 1:39:24 PM
+set status to watching
+Succesfully registered commands locally. 7/20/2022, 1:39:25 PM
+help command executed by Xndr at 7/20/2022, 1:39:47 PM
+ping command executed by Xndr at 7/20/2022, 1:39:58 PM
+meme command executed by Xndr at 7/20/2022, 1:40:05 PM
+info command executed by Xndr at 7/20/2022, 1:40:20 PM
+serverinfo command executed by Xndr at 7/20/2022, 1:40:24 PM

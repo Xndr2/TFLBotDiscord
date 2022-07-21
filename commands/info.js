@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageEmbed, MessageButton, MessageActionRow, User, Guild } = require('discord.js')
 const fetch = require('node-fetch');
+const fs = require('fs');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -24,5 +25,14 @@ module.exports = {
             .setFooter({text: "info command."});
         
         await interaction.reply({ embeds: [InfoEmbed]});
+
+        //log into file
+        const content = '\ninfo command executed by '+ interaction.member.user.username + ' at ' + new Date().toLocaleString();
+        const path = 'Logs.txt';
+        fs.writeFile(path, content, { flag: 'a' }, err => { //append to file write at end of file
+            if (err) {
+              console.error(err);
+            }
+        });
     }
 }
